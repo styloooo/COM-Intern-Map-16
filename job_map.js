@@ -70,7 +70,7 @@ var map = new Datamap({
 	geographyConfig: {
 		popupTemplate: function(geography, data) { //this function should just return a string
 	          	if(!data){
-	          		return "<div class='hoverinfo'>No data currently available for <strong>"+ geography.properties.name +"</strong> yet.</div>";
+	          		return "<div class='hoverinfo'>No data currently available for <strong>"+ geography.properties.name +"</strong>.</div>";
 	          	}
 	          	else{
 	          		if(data.names.length >= 5){
