@@ -7,6 +7,8 @@
     column-gap: 3px;
 }
 
+/*This is the inner container for the map — it fills the outer frame. 
+Keep width and height at 100%.*/
 #container{
 	position: relative;
 	width: 100%;
@@ -16,6 +18,9 @@
 	text-align: left;
 }
 
+/*This is the outer container — change width and height 
+for a different overall size. Width and height MUST REMAIN 
+AS PERCENTAGES, or else the map will not be responsive/resizable.*/
 .frame{
 	width: 65%;
 	height: 10%;
