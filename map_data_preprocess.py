@@ -1,8 +1,10 @@
 import csv
+import json
+#import pprint
 
 rawfile = "com_intern_jobs_2016.txt"
 codefile = 'state_codes_map.csv'
-outputfile = 'output_jobs.txt'
+outputfile = 'intern_postings.json'
 
 state_codes = []
 
@@ -45,14 +47,23 @@ with open(rawfile, 'rb') as tsvin:
 		#List of lists for output
 		jobsData.append(relation)
 
-	print jobsData
+	#print jobsData
 
+jobsTree = {}
 
-		# if state not in state_codes:
-		# 	state_codes.append(state)
+for posting in jobsData:
+		state = posting[0]
+		position = posting[1]
 
-with open(outputfile, 'wb') as output:
-	writer = csv.writer(output, delimiter="\t")
-	writer.writerows(jobsData)
+		if state not in jobsTree:
+			jobsTree[state] = {'names' : [position]}
+		else:
+			stateLevel = jobsTree[state]
+			stateLevel['names'].append(position)
 
-#print sorted(state_codes)
+# pp = pprint.PrettyPrinter()
+
+# pp.pprint(jobsTree)
+
+with open(outputfile, 'w+') as output:
+	json.dump(jobsTree, output)
